@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ public class Create : MonoBehaviour
     private float MinX, MaxX, MinY, MaxY;
 
     //VARIABLE PARA CREAR UNA POSICION ALEATORIA AL INICIO
-    private Vector2 BornPosition;
+    public Vector3 BornPos;
 
     //VARIABLE PARA EMPARENTAR LOS AVIONES QUE SE CREAN
     public Transform padre;
@@ -25,19 +24,26 @@ public class Create : MonoBehaviour
     //CONTROLADOR PARA INSTANCIAR EN UN TIEMPO DETERMINADO
     public bool CanSpawn = true;
 
+    public LineRenderer Line;
+
+
     void Start()
     {
         //CALCULAMOS LA PANTALLA
         ScreenSize();
-
     }
 
     private void Update()
     {
-            if (CanSpawn)
-            {
-                StartCoroutine(SpawnManager(2f));
-            }
+        if (CanSpawn)
+        {
+            StartCoroutine(SpawnManager(2f));
+        }
+
+        if (Line == null)
+        {
+            Debug.Log("ERROR");
+        }
     }
 
     //ESTE METODO CALCULA EL TAMANO DE LA PANTALLA Y LO GUARDA EN VARIABLES INDEPENDIENTES
@@ -52,28 +58,33 @@ public class Create : MonoBehaviour
     }
 
     //METODO PARA INSTANCIAR UN OBJETO EN CUALQUIER LUGAR DE LA PANTALLA
-    void CreateAndGo()
+    void Spawn()
     {
 
-        //DENTRO DE UN VECTOR 2 GUARDAMOS LOS LIMITES DE LA PANTALLA
-        BornPosition = new Vector2(Random.Range(MinX, MaxX), Random.Range(MinY, MaxY));
+        //DENTRO DE BornPosition GUARDAMOS UN POSICION ALEATORIA DENTRO DE LOS LIMITES DE LA PANTALLA
+        BornPos = new Vector2(UnityEngine.Random.Range(MinX, MaxX), UnityEngine.Random.Range(MinY, MaxY));
 
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
-        Instantiate(planes, BornPosition, Quaternion.identity, padre);
+        Instantiate(planes, BornPos, Quaternion.identity, padre);
+
+        //Line = GetComponent<LineRenderer>();
+
+        //Line.SetPosition(0, BornPos);
+        //Line.SetPosition(1, Move.backdoor.Positions[Move.backdoor.randy].position);
 
     }
 
 
     //A TRAVES DE UN BOOLEANO Y UN DETERMINADO TIEMPO LLAMAREMOS AL METODO DE CREACION DE AVIONES
-        IEnumerator SpawnManager(float time)
-        {
-            CreateAndGo();
-            
-            CanSpawn = false;
+    IEnumerator SpawnManager(float time)
+    {
+        Spawn();
 
-            yield return new WaitForSeconds(time);
+        CanSpawn = false;
 
-            CanSpawn = true;
-        }
+        yield return new WaitForSeconds(time);
+
+        CanSpawn = true;
     }
+}
 
