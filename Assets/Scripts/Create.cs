@@ -18,12 +18,13 @@ public class Create : MonoBehaviour
     //VARIABLE PARA CREAR UNA POSICION ALEATORIA AL INICIO
     public Vector3 BornPos;
 
-    //VARIABLE PARA EMPARENTAR LOS AVIONES QUE SE CREAN
+    //VARIABLE PARA METER LOS GAMEOBJECTS A UN EMPTY
     public Transform padre;
 
     //CONTROLADOR PARA INSTANCIAR EN UN TIEMPO DETERMINADO
     public bool CanSpawn = true;
 
+    
     public LineRenderer Line;
 
 
@@ -67,10 +68,11 @@ public class Create : MonoBehaviour
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
         Instantiate(planes, BornPos, Quaternion.identity, padre);
 
-        Line = GetComponent<LineRenderer>();
+        //ESTO ES LO QUE NO ME SALE :c
+        //Line = GetComponent<LineRenderer>();
 
-        Line.SetPosition(0, BornPos);
-        Line.SetPosition(1, Move.backdoor.Positions[Move.backdoor.randy].position);
+        //Line.SetPosition(0, BornPos);
+        //Line.SetPosition(1, Move.backdoor.Positions[Move.backdoor.randy].position);
 
     }
 
