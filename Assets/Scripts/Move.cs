@@ -11,7 +11,7 @@ public class Move : MonoBehaviour
     public float speed;
 
     //ESTA VARIABLE GENERA UN NUMERO ALEATORIO QUE ELEGIRA UN DESTINO DE LA LISTA POSITIONS
-    private int randy;
+    public int randy;
 
     //LISTA DE OBJETIVOS
     public List<Transform> Positions = new List<Transform>();

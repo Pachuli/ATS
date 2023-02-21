@@ -67,10 +67,10 @@ public class Create : MonoBehaviour
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
         Instantiate(planes, BornPos, Quaternion.identity, padre);
 
-        //Line = GetComponent<LineRenderer>();
+        Line = GetComponent<LineRenderer>();
 
-        //Line.SetPosition(0, BornPos);
-        //Line.SetPosition(1, Move.backdoor.Positions[Move.backdoor.randy].position);
+        Line.SetPosition(0, BornPos);
+        Line.SetPosition(1, Move.backdoor.Positions[Move.backdoor.randy].position);
 
     }
 
