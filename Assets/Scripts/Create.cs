@@ -24,14 +24,13 @@ public class Create : MonoBehaviour
     //CONTROLADOR PARA INSTANCIAR EN UN TIEMPO DETERMINADO
     public bool CanSpawn = true;
 
-    
-    public LineRenderer Line;
 
 
     void Start()
     {
         //CALCULAMOS LA PANTALLA
         ScreenSize();
+
     }
 
     private void Update()
@@ -41,10 +40,6 @@ public class Create : MonoBehaviour
             StartCoroutine(SpawnManager(2f));
         }
 
-        if (Line == null)
-        {
-            Debug.Log("ERROR");
-        }
     }
 
     //ESTE METODO CALCULA EL TAMANO DE LA PANTALLA Y LO GUARDA EN VARIABLES INDEPENDIENTES
@@ -67,12 +62,6 @@ public class Create : MonoBehaviour
 
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
         Instantiate(planes, BornPos, Quaternion.identity, padre);
-
-        //ESTO ES LO QUE NO ME SALE :c
-        //Line = GetComponent<LineRenderer>();
-
-        //Line.SetPosition(0, BornPos);
-        //Line.SetPosition(1, Move.backdoor.Positions[Move.backdoor.randy].position);
 
     }
 

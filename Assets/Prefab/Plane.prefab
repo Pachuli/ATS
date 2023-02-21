@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4513132031204040665}
   - component: {fileID: 7893943451985484137}
   - component: {fileID: -5306692098936772421}
-  - component: {fileID: -4875354050088509270}
+  - component: {fileID: 7139039607237124334}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.85
+  randy: 0
+  Line: {fileID: 7139039607237124334}
   Positions:
   - {fileID: 5553655859963736995, guid: 476791cb73a7f104283a6672bf8387b6, type: 3}
   - {fileID: 8300354565326949481, guid: 60dede290ddcd434eaf092c34e37eeae, type: 3}
@@ -130,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!120 &-4875354050088509270
+--- !u!120 &7139039607237124334
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,13 +178,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5282815
+    widthMultiplier: 0.25
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.11111069
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0

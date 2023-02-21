@@ -13,6 +13,9 @@ public class Move : MonoBehaviour
     //ESTA VARIABLE GENERA UN NUMERO ALEATORIO QUE ELEGIRA UN DESTINO DE LA LISTA POSITIONS
     public int randy;
 
+    //LINEA DE TRAYECTORIA
+    public LineRenderer Line;
+
     //LISTA DE OBJETIVOS
     public List<Transform> Positions = new List<Transform>();
 
@@ -20,7 +23,13 @@ public class Move : MonoBehaviour
 
     public void Start()
     {
-        randy = Random.Range(0,Positions.Count);
+        randy = Random.Range(0, Positions.Count);
+
+        Line = GetComponent<LineRenderer>();
+ 
+
+        Line.SetPosition(0, Create.backdoor.BornPos);
+        Line.SetPosition(1, Positions[randy].position);
 
     }
 
