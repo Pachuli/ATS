@@ -25,11 +25,19 @@ public class Move : MonoBehaviour
     {
         randy = Random.Range(0, Positions.Count);
 
-        Line = GetComponent<LineRenderer>();
- 
+        //SE INICIALIZA EL SINGLETON
+        if (backdoor != null)
+        {
 
-        Line.SetPosition(0, Create.backdoor.BornPos);
-        Line.SetPosition(1, Positions[randy].position);
+            return;
+        }
+
+        else
+        {
+
+            backdoor = this;
+        }
+
 
     }
 
@@ -41,6 +49,8 @@ public class Move : MonoBehaviour
         this.transform.position = Vector2.MoveTowards(transform.position,
         Positions[randy].position, speed * Time.deltaTime);
 
+        LinePlane();
+
     }
 
 
@@ -50,6 +60,15 @@ public class Move : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void LinePlane()
+    {
+        Line = GetComponent<LineRenderer>();
+
+
+        Line.SetPosition(0, this.transform.position);
+        Line.SetPosition(1, Positions[randy].position);
     }
 
 }

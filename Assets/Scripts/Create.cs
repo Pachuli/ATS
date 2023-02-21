@@ -6,7 +6,7 @@ using UnityEngine;
 public class Create : MonoBehaviour
 {
 
-    //ACCESO
+    //ACCESO A TRAVES DE UN SINGLETON
     public static Create backdoor;
 
     //OBJETO QUE SE INSTANCIARA
@@ -28,6 +28,19 @@ public class Create : MonoBehaviour
 
     void Start()
     {
+        //SE INICIALIZA EL SINGLETON
+        if (backdoor != null)
+        {
+
+            return;
+        }
+
+        else
+        {
+
+            backdoor = this;
+        }
+
         //CALCULAMOS LA PANTALLA
         ScreenSize();
 
