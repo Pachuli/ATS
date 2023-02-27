@@ -24,6 +24,9 @@ public class Create : MonoBehaviour
     //CONTROLADOR PARA INSTANCIAR EN UN TIEMPO DETERMINADO
     public bool CanSpawn = true;
 
+    public Transform AirSpace;
+
+    public Vector3 center;
 
 
     void Start()
@@ -64,6 +67,8 @@ public class Create : MonoBehaviour
         MaxX = Size.x;
         MinY = -Size.y;
         MaxY = Size.y;
+
+        Vector3 SpacePosition = center + new Vector3(Random.Range(MinX / 2, MaxX / 2), Random.Range(MinY / 2, MaxY / 2),1);
     }
 
     //METODO PARA INSTANCIAR UN OBJETO EN CUALQUIER LUGAR DE LA PANTALLA
@@ -71,7 +76,7 @@ public class Create : MonoBehaviour
     {
 
         //DENTRO DE BornPosition GUARDAMOS UN POSICION ALEATORIA DENTRO DE LOS LIMITES DE LA PANTALLA
-        BornPos = new Vector2(UnityEngine.Random.Range(MinX, MaxX), UnityEngine.Random.Range(MinY, MaxY));
+        BornPos = new Vector3(UnityEngine.Random.Range(MinX, MaxX), UnityEngine.Random.Range(MinY, MaxY), 10);
 
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
         Instantiate(planes, BornPos, Quaternion.identity, padre);
