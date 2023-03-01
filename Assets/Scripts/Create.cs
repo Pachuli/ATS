@@ -12,21 +12,17 @@ public class Create : MonoBehaviour
     //OBJETO QUE SE INSTANCIARA
     public GameObject planes;
 
-    //LIMITES PANTALLA
-    private float MinX, MaxX, MinY, MaxY;
-
-    //VARIABLE PARA CREAR UNA POSICION ALEATORIA AL INICIO
-    public Vector3 BornPos;
-
     //VARIABLE PARA METER LOS GAMEOBJECTS A UN EMPTY
     public Transform padre;
 
     //CONTROLADOR PARA INSTANCIAR EN UN TIEMPO DETERMINADO
     public bool CanSpawn = true;
 
-    public Transform AirSpace;
+    // VARIABLES PARA CALCULAR LOS LIMITES DEL MAPA
 
-    public Vector3 center;
+    public Vector2 center;
+
+    public Vector2 Size;
 
 
     void Start()
@@ -44,8 +40,10 @@ public class Create : MonoBehaviour
             backdoor = this;
         }
 
-        //CALCULAMOS LA PANTALLA
-        ScreenSize();
+
+        center = this.transform.position;
+        Size = this.transform.localScale;
+
 
     }
 
@@ -58,28 +56,13 @@ public class Create : MonoBehaviour
 
     }
 
-    //ESTE METODO CALCULA EL TAMANO DE LA PANTALLA Y LO GUARDA EN VARIABLES INDEPENDIENTES
-    void ScreenSize()
-    {
-        Vector2 Size = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-
-        MinX = -Size.x;
-        MaxX = Size.x;
-        MinY = -Size.y;
-        MaxY = Size.y;
-
-        Vector3 SpacePosition = center + new Vector3(Random.Range(MinX / 2, MaxX / 2), Random.Range(MinY / 2, MaxY / 2),1);
-    }
-
     //METODO PARA INSTANCIAR UN OBJETO EN CUALQUIER LUGAR DE LA PANTALLA
     void Spawn()
     {
 
-        //DENTRO DE BornPosition GUARDAMOS UN POSICION ALEATORIA DENTRO DE LOS LIMITES DE LA PANTALLA
-        BornPos = new Vector3(UnityEngine.Random.Range(MinX, MaxX), UnityEngine.Random.Range(MinY, MaxY), 10);
-
+        Vector2 ScanMapSize = center + new Vector2(Random.Range(-Size.x / 2, Size.x / 2), Random.Range(-Size.y / 2, Size.y / 2));
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
-        Instantiate(planes, BornPos, Quaternion.identity, padre);
+        Instantiate(planes,ScanMapSize, Quaternion.identity, padre);
 
     }
 
