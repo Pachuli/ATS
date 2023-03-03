@@ -20,9 +20,9 @@ public class Create : MonoBehaviour
 
     // VARIABLES PARA CALCULAR LOS LIMITES DEL MAPA
 
-    public Vector2 center;
+    public Vector3 center;
 
-    public Vector2 Size;
+    public Vector3 Size;
 
 
     void Start()
@@ -60,9 +60,12 @@ public class Create : MonoBehaviour
     void Spawn()
     {
 
-        Vector2 ScanMapSize = center + new Vector2(Random.Range(-Size.x / 2, Size.x / 2), Random.Range(-Size.y / 2, Size.y / 2));
+        Vector3 ScanMap = center + new Vector3
+                                        (Random.Range(-Size.x / 2, Size.x / 2), Random.Range(-Size.y / 2, Size.y / 2), Random.Range(-Size.z / 2, Size.z));
+        
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
-        Instantiate(planes,ScanMapSize, Quaternion.identity, padre);
+        
+        Instantiate(planes,ScanMap, Quaternion.identity, padre);
 
     }
 
