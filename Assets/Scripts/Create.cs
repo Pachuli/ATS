@@ -20,9 +20,11 @@ public class Create : MonoBehaviour
 
     // VARIABLES PARA CALCULAR LOS LIMITES DEL MAPA
 
+    public Vector3 Size;
+
     public Vector3 center;
 
-    public Vector3 Size;
+    public int PlanesCount;
 
 
     void Start()
@@ -41,10 +43,6 @@ public class Create : MonoBehaviour
         }
 
 
-        center = this.transform.position;
-        Size = this.transform.localScale;
-
-
     }
 
     private void Update()
@@ -54,6 +52,8 @@ public class Create : MonoBehaviour
             StartCoroutine(SpawnManager(2f));
         }
 
+        center = new Vector3(4044,0,0);
+
     }
 
     //METODO PARA INSTANCIAR UN OBJETO EN CUALQUIER LUGAR DE LA PANTALLA
@@ -61,11 +61,14 @@ public class Create : MonoBehaviour
     {
 
         Vector3 ScanMap = center + new Vector3
-                                        (Random.Range(-Size.x / 2, Size.x / 2), Random.Range(-Size.y / 2, Size.y / 2), Random.Range(-Size.z / 2, Size.z));
+                                        (Random.Range(-50 / 2, 50 / 2), Random.Range(-50 / 2,50 / 2), 0);
         
         //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
-        
         Instantiate(planes,ScanMap, Quaternion.identity, padre);
+
+        
+        PlanesCount++;
+
 
     }
 
