@@ -18,12 +18,7 @@ public class Create : MonoBehaviour
     //CONTROLADOR PARA INSTANCIAR EN UN TIEMPO DETERMINADO
     public bool CanSpawn = true;
 
-    // VARIABLES PARA CALCULAR LOS LIMITES DEL MAPA
-
-    public Vector3 Size;
-
-    public Vector3 center;
-
+    //CONTADOR DE AVIONES SPAWNEADOS
     public int PlanesCount;
 
 
@@ -52,21 +47,22 @@ public class Create : MonoBehaviour
             StartCoroutine(SpawnManager(2f));
         }
 
-        center = new Vector3(4044,0,0);
-
     }
 
     //METODO PARA INSTANCIAR UN OBJETO EN CUALQUIER LUGAR DE LA PANTALLA
     void Spawn()
     {
 
-        Vector3 ScanMap = center + new Vector3
-                                        (Random.Range(-50 / 2, 50 / 2), Random.Range(-50 / 2,50 / 2), 0);
-        
-        //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
-        Instantiate(planes,ScanMap, Quaternion.identity, padre);
+        //Vector3 ScanMap = center + new Vector3
+        //(Random.Range(-50 / 2, 50 / 2), Random.Range(-50 / 2,50 / 2), 0);
 
-        
+        //SE GENERA UN OBJETO DENTRO DE LA PANTALLA
+        //Instantiate(planes,ScanMap, Quaternion.identity, padre);
+
+        Vector3 randomPosition = new Vector3(Random.Range(3900, 4200), (Random.Range(-150, 150)),0);
+
+        Instantiate(planes, randomPosition, Quaternion.identity, padre);
+
         PlanesCount++;
 
 

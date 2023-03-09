@@ -470,8 +470,6 @@ MonoBehaviour:
   planes: {fileID: 4239928635638270110, guid: 5285d07247b65b2459a3a6a871e7f545, type: 3}
   padre: {fileID: 176538216}
   CanSpawn: 1
-  Size: {x: 10, y: 10, z: 10}
-  center: {x: 0, y: 0, z: 0}
   PlanesCount: 0
 --- !u!61 &454632151
 BoxCollider2D:
@@ -1637,6 +1635,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8943126934017107415, guid: ceb2918e166a69648b31a621bccab4c0, type: 3}
   m_PrefabInstance: {fileID: 1642315807}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1815848261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815848262}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815848262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815848261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4195, y: -156, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1891253773
 PrefabInstance:
   m_ObjectHideFlags: 0
